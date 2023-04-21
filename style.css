@@ -10,7 +10,7 @@ General
     --color-1: #336BE5;
     --color-2: #19c4b3;
     --color-3: #28436A;
-    --color-4: #ECF0F3;
+    --color-4: #EDF1F4;
 }
 
 body{font-family: 'Source Sans Pro', sans-serif; color: var(--color-3); background-color: var(--color-4); }
@@ -38,6 +38,9 @@ Helpers
 
 .neo{border-radius: 2rem; padding: 2.5rem; background: transparent; box-shadow:  4px 4px 20px rgba(40, 67, 106, 0.1), -4px -4px 20px white;}
 .neo--inset {box-shadow: inset 4px 4px 20px rgba(40, 67, 106, 0.1), inset -4px -4px 20px white;}
+
+.neo--2{border-radius: 2rem; padding: 2.5rem; background: transparent; box-shadow:  15px 15px 20px rgba(0, 0, 0, 0.1), -15px -15px 20px rgb(255, 255, 255),  inset -5px 5px 5px rgba(255, 255, 255, 0.5), inset 5px 5px 5px rgba(0, 0, 0, 0.05);}
+
 
 .divider{height: 100vh; border: 1px solid red;;}
 
@@ -104,6 +107,7 @@ Cards
 .card h3{margin-left: auto; margin-right: auto; background: unset; background-clip: unset; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: var(--color-3);}
 
 @media (max-width: 1200px) {
+    .cards{justify-content: space-around; }
     .card{width: 40%; text-align: center;}
 }
 
@@ -118,8 +122,8 @@ Testimonials
 ----------------------*/
 .testimonials{margin: 15vh auto; display: flex; justify-content: space-between; align-items: center; position: relative; flex-wrap: wrap; row-gap: 5vh;}
 
-.testimonials__media{width: 35%; z-index: 10; position: relative; max-width: 400px;}
-.testimonials__reviews{ width: 50%; display: flex; flex-direction: column; gap: 5vh;position: relative; z-index: 10;}
+.testimonials__media{width: 35%; z-index: 10; position: relative; max-width: 600px;}
+.testimonials__reviews{ width: 50%; display: flex; flex-direction: column; gap: 5vh; position: relative; z-index: 10;}
 
 .testimonials__reviews__item h3{ background: unset; background-clip: unset; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: var(--color-3);}
 
@@ -144,7 +148,7 @@ Testimonials
 
 
 @media (max-width: 1200px) {
-    .testimonials__media{width: 80%; margin-left: auto; margin-right: auto;}
+    .testimonials__media{width: 50%; margin-left: auto; margin-right: auto;}
     .testimonials__reviews{ width: 100%;}
 
     .testimonials__icon{width: 50px;  height: 50px;}
@@ -155,7 +159,7 @@ Testimonials
 /*----------------------
 Form
 ----------------------*/
-.form{margin: 15vh auto; padding: 5rem 2.5rem !important;}
+.form{margin: 15vh auto; padding: 5rem !important;}
 
 .form__field{position: relative; margin-top: 2rem;;}
 .form__field label{position: absolute; top: 50%; left: 0.75rem; padding: 0.75rem; font-size: 1rem; transform: translateY(-50%); transition: 0.4s; }
@@ -179,7 +183,7 @@ Form
 
 @media (max-width: 1200px) {
 
-    .form{ padding: 2.5rem;}
+    .form{ padding: 5rem 2.5rem !important;}
 
 }
 
