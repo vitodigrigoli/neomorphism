@@ -24,12 +24,13 @@ p{ font-size: clamp(1rem, 1.2vw, 2rem); line-height: 2; }
 a{ text-decoration: none; color: inherit; cursor: pointer; }
 button{border: none; background-color: unset;}
 
-
+section{position: relative; z-index: 10;}
 /*----------------------
 Helpers
 ----------------------*/
 
 .container{ width: 86%; margin: 0 auto;}
+.container .container{ width: 70%;}
 
 .text--1{ font-size: clamp(2.5rem, 4vw, 6rem);}
 .text--2{ font-size: clamp(1.5rem, 2.5vw, 4rem);}
@@ -38,11 +39,22 @@ Helpers
 .neo{border-radius: 2rem; padding: 2.5rem; background: transparent; box-shadow:  4px 4px 20px rgba(40, 67, 106, 0.1), -4px -4px 20px white;}
 .neo--inset {box-shadow: inset 4px 4px 20px rgba(40, 67, 106, 0.1), inset -4px -4px 20px white;}
 
+.divider{height: 100vh; border: 1px solid red;;}
+
+@media (max-width: 1200px) {
+    .container .container{width: 100%;}
+}
+
 /*----------------------
 Button
 ----------------------*/
+.buttons{ display: flex; column-gap: 2rem; flex-wrap: wrap;}
+
 .button{display: inline-block; padding: 1rem 1.5rem; box-shadow:  4px 4px 20px rgba(40, 67, 106, 0.1), -4px -4px 20px white; font-family: 'Kanit', sans-serif; text-transform: uppercase; margin-top: 2rem; border-radius: 1rem; cursor: pointer; letter-spacing: 1px;}
 .button:hover{box-shadow: inset 4px 4px 20px rgba(40, 67, 106, 0.1), inset -4px -4px 20px white;}
+
+.button--secondary{display: inline-block; padding: 1rem 1.5rem; box-shadow: inset 4px 4px 20px rgba(40, 67, 106, 0.1), inset -4px -4px 20px white; font-family: 'Kanit', sans-serif; text-transform: uppercase; margin-top: 2rem; border-radius: 1rem; cursor: pointer; letter-spacing: 1px;}
+.button--secondary:hover{box-shadow: 4px 4px 20px rgba(40, 67, 106, 0.1), -4px -4px 20px white;}
 
 
 /*----------------------
@@ -55,7 +67,7 @@ Panel
 
 .panel__media{width: 40%; }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
     .panel__text{width: 100%;}
     .panel__media{width: 100%; }
 }
@@ -143,12 +155,18 @@ Testimonials
 /*----------------------
 Form
 ----------------------*/
-.form{margin: 15vh auto; max-width: 800px; padding: 5rem;}
+.form{margin: 15vh auto; padding: 5rem 2.5rem !important;}
+
+.form__field{position: relative; margin-top: 2rem;;}
+.form__field label{position: absolute; top: 50%; left: 0.75rem; padding: 0.75rem; font-size: 1rem; transform: translateY(-50%); transition: 0.4s; }
+
+.form__field input:not(:placeholder-shown) ~ label {top: 0; border-radius: 0.5rem; padding: 0.5rem; background: transparent; box-shadow:  inset 4px 4px 20px rgba(40, 67, 106, 0.1), inset -4px -4px 20px white; font-size: 0.7rem;}
+
 
 .form input:not([type=submit]),
 .form textarea{display: block; width: 100%; margin-top: 2rem; outline: none; border: none; font-size: 1rem; font-family: 'Source Sans Pro', sans-serif; color: var(--color-3); padding: 1.5rem;}
 
-.form input::placeholder,
+.form input::placeholder{opacity: 0;}
 .form textarea::placeholder{color: var(--color-3);}
 .form__checkbox {display: flex; align-items: center; margin-top: 2rem;}
 
@@ -162,8 +180,7 @@ Form
 @media (max-width: 1200px) {
 
     .form{ padding: 2.5rem;}
-    .form input:not([type=submit]),
-    .form textarea{padding: 1rem;}
+
 }
 
 
@@ -185,12 +202,13 @@ to { transform: rotate(360deg); }
 
 /* Footer
 ------------------------------------------------------------------------- */
-.footer{padding: 5rem; margin: 15vh auto;}
+.footer{ margin: 15vh 0 0;  position: relative; z-index: 100; background-color: var(--color-4); }
+.footer .container{display: flex; flex-direction: column; row-gap: 5rem; padding: 5rem 0;}
 .footer a{display: inline-block; transition: 0.4s;}
 .footer a:hover{transform: scale(1.05);}
 
 .footer__header{display: flex; flex-direction: column; gap: 0.5rem;}
-.footer__header p{font-size: 1.7rem;  font-weight: 600; ;}
+.footer__header p{font-size: 2rem; font-weight: 600;}
 .footer__header__logo{ width: 50%;}
 .footer__header__contact{ font-weight: bold; display: flex; gap: 1rem 2rem; flex-wrap: wrap;}
 .footer__header__contact a{ font-size: 1.3rem;;}
@@ -199,14 +217,16 @@ to { transform: rotate(360deg); }
 .footer__body{display: flex; flex-wrap: wrap; justify-content: space-between; margin: 5rem 0; row-gap: 2.5rem;}
 .footer__body h3{background: unset; background-clip: unset; -webkit-background-clip: unset; -webkit-text-fill-color: unset; color: var(--color-3); margin-block-end: 0.5rem;}
 .footer__body p{font-size: 1rem;}
-.footer__credits{display: flex; justify-content: space-between; font-weight: bold; font-family: 'Kanit', sans-serif; letter-spacing: 1px; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; text-align: center; align-items: center; }
 
-.footer__credits__item{display: flex; gap: 1rem; justify-content: center;}
-.footer__credits a i {font-size: 1.5rem;}
+
+.footer__credits{display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-family: 'Kanit', sans-serif; letter-spacing: 1px; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+
+.footer__credits__item{display: flex; gap: 1rem; justify-content: flex-end; text-align: right; width: 100%;  }
+.footer__credits a i {font-size: 1.8rem;}
 
 
 @media (max-width: 1200px) {
-    .footer{padding: 2.5rem;}
+    .footer .container{padding: 2.5rem 0;}
     .footer__header__logo{ width: 100%; max-width: 500px;}
     .footer__credits__item{width: 100%;}
     .footer__header__contact a{display: block;}
@@ -215,7 +235,7 @@ to { transform: rotate(360deg); }
 
 /* Floating
 ------------------------------------------------------------------------- */
-.floating{position: fixed; bottom: 5%; right: 7%;  background: var(--color-4); z-index: 999; transition: 0.4s;  min-width: 250px; }
+.floating{position: fixed; bottom: 5%; right: 7%;  background: var(--color-4); z-index: 99; transition: 0.4s;  min-width: 250px; }
 .floating:hover{transform: scale(1.05);}
 
 .floating i{font-size: 1.5rem;  margin-right: 1rem;}
